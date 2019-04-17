@@ -11,7 +11,7 @@
       <title>Layer 1</title>
       <g id="Graphic_11">
         <path d="M 103.9 97 L 93.4 90.75 L 93.4 78.25 L 103.9 72 L 114.4 78.25 L 114.4 90.75 Z" fill="#aa7fff"/>
-        <path d="M 103.9 97 L 93.4 90.75 L 93.4 78.25 L 103.9 72 L 114.4 78.25 L 114.4 90.75 Z" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        <path d="M 103.9 97 L 93.4 90.75 L 93.4 78.25 L 103.9 72 L 114.4 78.25 L 114.4 90.75 Z" stroke-opacity="0" stroke="white" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
       </g>
     </g>
   </g>

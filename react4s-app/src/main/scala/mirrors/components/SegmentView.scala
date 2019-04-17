@@ -11,8 +11,8 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
       case Sector.A | Sector.D => A.src("images/hexagon-a-d.svg")
       case Sector.B | Sector.E => A.src("images/hexagon-b-e.svg")
       case Sector.C | Sector.F => A.src("images/hexagon-c-f.svg")
-      case Sector.Empty => A.src("images/hexagon-black.svg")
+      case Sector.Empty => A.src("images/hexagon-transparent.svg")
     }
-    E.img(source)
+    E.img(source, A.className("hexagon"))
   }
 }

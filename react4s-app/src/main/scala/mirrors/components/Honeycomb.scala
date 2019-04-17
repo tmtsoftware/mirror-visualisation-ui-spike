@@ -10,17 +10,10 @@ case class Honeycomb() extends Component[NoEmit]{
 
   val data: Seq[SegmentRow] = Data.segments
 
-  object HoneyCombCss extends CssClass(
-    S.margin("30px 20px "),
-    S.backgroundColor("black"),
-    S.padding("30px 20px 20px 20px"),
-    S.display("inline-block"),
-    S.borderRadius("5px")
-  )
 
   override def render(get: Get): Node = {
     E.div(
-      HoneyCombCss,
+      A.className("honeycomb"),
       Tags(data.seq.zipWithIndex.map {
         case (row, index) => Component(RowView, row, index).withKey(UUID.randomUUID().toString)
       })
