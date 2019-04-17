@@ -7,9 +7,9 @@ import scala.scalajs.js.annotation.JSImport
 
 @js.native
 @JSImport("react-sidebar", JSImport.Default)
-object `sidebar` extends js.Object
+object `react-sidebar` extends js.Object
 
-object Sidebar extends JsComponent(`sidebar`)
+object Sidebar extends JsComponent(`react-sidebar`)
 /*
 import React from 'react'
 import { render } from 'react-dom'

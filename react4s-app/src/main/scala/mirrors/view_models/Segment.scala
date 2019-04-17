@@ -1,5 +1,7 @@
 package mirrors.view_models
 
-case class Segment(sector: Sector){
+import java.util.UUID
+
+case class Segment(sector: Sector, uniqueId: String = UUID.randomUUID().toString){
   def * (number: Int): SegmentSpan = SegmentSpan(Seq.fill(number)(this.copy(sector)))
 }
