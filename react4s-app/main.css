@@ -28,7 +28,12 @@
 }
 
 #hex:hover {
-    z-index: 10000000;
+    z-index: 601;
+    transform: scale(1.5);
+}
+
+#hex.selected {
+    z-index: 600;
     transform: scale(1.5);
 }
 
@@ -37,6 +42,11 @@
 }
 
 #hex:hover #hex-shape {
+    stroke: #0d63ff;
+    stroke-opacity: 1;
+}
+
+#hex.selected #hex-shape {
     stroke: black;
     stroke-opacity: 1;
 }

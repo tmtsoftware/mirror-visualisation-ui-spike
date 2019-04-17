@@ -3,12 +3,17 @@ package mirrors.components
 import java.util.UUID
 
 import com.github.ahnfelt.react4s._
+import mirrors.facades.ReactTooltip
 import mirrors.view_models.{Sector, Segment}
 
 case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
 
+  val selected: State[Boolean] = State[Boolean](false)
+
   override def render(get: Get): Node = {
     val seg = get(segment)
+
+    val uniqueId = UUID.randomUUID().toString
 
     def hex(
              fillColor: String,
@@ -17,7 +22,9 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
              strokeOpacity: Double = 1,
              noIds:Boolean = false
            ) = E("svg",
-      A("id", if(noIds) UUID.randomUUID().toString else "hex"),
+      A("id", if(noIds) uniqueId else "hex"),
+      A.className(if (get(selected)) "selected" else ""),
+      A.onClick(_ => selected.set(true)),
       A("viewBox", "34.9 66.5 22 26"),
       A("width", "22"),
       A("height", "26"),
@@ -42,13 +49,15 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
     )
 
     E.div(
-      A("data-tip", "Some tooltip"),
+      A("data-tip", uniqueId),
+      A("data-for", uniqueId),
       seg.sector match {
         case Sector.A | Sector.D => hex("#e7cfa0", strokeOpacity = 0)
         case Sector.B | Sector.E => hex("#7cc1d2", strokeOpacity = 0)
         case Sector.C | Sector.F => hex("#aa7fff", strokeOpacity = 0)
         case Sector.Empty => hex("white", fillOpacity = 0, strokeOpacity = 0, noIds = true)
-      }
+      },
+      ReactTooltip(J("effect", "solid"), J("id", uniqueId))
     )
   }
 }

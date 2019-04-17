@@ -10,7 +10,7 @@ ThisBuild / organization := "org.tmt"
 ThisBuild / organizationName := "tmt"
 
 scalaVersion := "2.12.8"
-
+val diodeVersion = "1.1.4"
 
 lazy val `react4s-app` = (project in file("./react4s-app"))
   .settings(
@@ -30,14 +30,15 @@ lazy val `react4s-app` = (project in file("./react4s-app"))
     libraryDependencies ++= Seq(
       scalaTest % Test,
       "org.scala-js" %%% "scalajs-dom" % "0.9.6",
-      "com.github.ahnfelt" %%% "react4s" % "0.9.24-SNAPSHOT"
-//      diode
+      "com.github.ahnfelt" %%% "react4s" % "0.9.24-SNAPSHOT",
+      "io.suzaku" %%% "diode" % diodeVersion
     ),
 
     Compile / npmDependencies ++= Seq(
       "react" -> "16.5.1",
       "react-dom" -> "16.5.1",
-      "react-tooltip" -> "3.10.0"
+      "react-tooltip" -> "3.10.0",
+      "react-sidebar" -> "3.0.2"
     ),
 
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",

@@ -7,10 +7,9 @@ import mirrors.Data
 import mirrors.facades.ReactTooltip
 import mirrors.view_models.SegmentRow
 
-case class Honeycomb() extends Component[NoEmit]{
+case class Honeycomb() extends Component[NoEmit] {
 
   val data: Seq[SegmentRow] = Data.segments
-
 
   override def render(get: Get): Node = {
     E.div(
