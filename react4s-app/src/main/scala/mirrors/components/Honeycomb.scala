@@ -4,6 +4,7 @@ import java.util.UUID
 
 import com.github.ahnfelt.react4s._
 import mirrors.Data
+import mirrors.facades.ReactTooltip
 import mirrors.view_models.SegmentRow
 
 case class Honeycomb() extends Component[NoEmit]{
@@ -16,7 +17,8 @@ case class Honeycomb() extends Component[NoEmit]{
       A.className("honeycomb"),
       Tags(data.seq.zipWithIndex.map {
         case (row, index) => Component(RowView, row, index).withKey(UUID.randomUUID().toString)
-      })
+      }),
+      ReactTooltip(J("effect", "solid"))
     )
   }
 }
