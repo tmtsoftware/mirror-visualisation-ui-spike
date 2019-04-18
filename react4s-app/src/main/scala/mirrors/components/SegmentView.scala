@@ -18,6 +18,7 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
 
   override def render(get: Get): Node = {
     val seg = get(segment)
+    val isSelected = get(selected).contains(seg.uniqueId)
 
     def hex(
              fillColor: String,
@@ -26,7 +27,7 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
              strokeOpacity: Double = 1,
              noIds: Boolean = false
            ) = E("svg",
-      A.className(if (get(selected).contains(seg.uniqueId)) "hexagon selected" else "hexagon"),
+      A.className(if (isSelected) "hexagon selected" else "hexagon"),
       A.onClick(_ => AppCircuit.dispatch(SelectSegment(seg.uniqueId))),
       A("viewBox", "34.9 66.5 22 26"),
       A("width", "22"),
@@ -51,18 +52,23 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
       )
     )
 
+    val blue = "#7cc1d2"
+    val yellow = "#e7cfa0"
+    val purple = "#aa7fff"
+
     seg.sector match {
       case Sector.Empty => hex("white", fillOpacity = 0, strokeOpacity = 0, noIds = true)
       case other =>
         E.div(
-          A("data-tip", seg.uniqueId),
-          A("data-for", seg.uniqueId),
-          other match {
-            case Sector.A | Sector.D => hex("#e7cfa0", strokeOpacity = 0)
-            case Sector.B | Sector.E => hex("#7cc1d2", strokeOpacity = 0)
-            case Sector.C | Sector.F => hex("#aa7fff", strokeOpacity = 0)
+        A("data-tip", seg.uniqueId),
+        A("data-for", seg.uniqueId),
+        other match {
+          case Sector.A | Sector.D => hex(yellow, strokeOpacity = 0)
+            case Sector.B | Sector.E => hex(blue, strokeOpacity = 0)
+            case Sector.C | Sector.F => hex(purple, strokeOpacity = 0)
           },
-          ReactTooltip(J("effect", "solid"), J("id", seg.uniqueId))
+          if (!isSelected)
+            ReactTooltip(J("effect", "solid"), J("id", seg.uniqueId)) else A("", "")
         )
     }
   }

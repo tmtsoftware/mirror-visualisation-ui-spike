@@ -19,7 +19,7 @@
 
 .hexagon {
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
     position: relative;
 }
 
@@ -27,16 +27,17 @@
     filter: drop-shadow( 4px 5px 4px rgba(0, 0, 0, 0.9));
     z-index: 601;
     transform: scale(1.5);
+    transition: all 0.5s ease-in-out;
 }
 
 .hexagon.selected {
     filter: drop-shadow( 4px 5px 4px rgba(0, 0, 0, 0.9));
     z-index: 600;
-    transform: scale(1.5);
+    transform: scale(20);
 }
 
 #hex-svg-path {
-    transition: all 0.2s;
+    transition: all 0.2s ease-in-out;
 }
 
 .hexagon:hover #hex-svg-path {
@@ -47,4 +48,5 @@
 .hexagon.selected #hex-svg-path {
     stroke: black;
     stroke-opacity: 1;
+    stroke-width: 0.2;
 }

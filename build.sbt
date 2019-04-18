@@ -38,7 +38,6 @@ lazy val `react4s-app` = (project in file("./react4s-app"))
       "react" -> "16.5.1",
       "react-dom" -> "16.5.1",
       "react-tooltip" -> "3.10.0",
-      "react-sidebar" -> "3.0.2"
     ),
 
     scalacOptions += "-P:scalajs:sjsDefinedByDefault",
