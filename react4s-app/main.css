@@ -18,35 +18,33 @@
 }
 
 .hexagon {
-    filter: drop-shadow( 4px 5px 4px rgba(0, 0, 0, 0.9));
-}
-
-#hex {
     cursor: pointer;
     transition: all 0.2s;
     position: relative;
 }
 
-#hex:hover {
+.hexagon:hover {
+    filter: drop-shadow( 4px 5px 4px rgba(0, 0, 0, 0.9));
     z-index: 601;
     transform: scale(1.5);
 }
 
-#hex.selected {
+.hexagon.selected {
+    filter: drop-shadow( 4px 5px 4px rgba(0, 0, 0, 0.9));
     z-index: 600;
     transform: scale(1.5);
 }
 
-#hex-shape {
+#hex-svg-path {
     transition: all 0.2s;
 }
 
-#hex:hover #hex-shape {
+.hexagon:hover #hex-svg-path {
     stroke: #0d63ff;
     stroke-opacity: 1;
 }
 
-#hex.selected #hex-shape {
+.hexagon.selected #hex-svg-path {
     stroke: black;
     stroke-opacity: 1;
 }

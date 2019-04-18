@@ -26,8 +26,7 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
              strokeOpacity: Double = 1,
              noIds: Boolean = false
            ) = E("svg",
-      A("id", if (noIds) seg.uniqueId else "hex"),
-      A.className(if (get(selected).contains(seg.uniqueId)) "selected" else ""),
+      A.className(if (get(selected).contains(seg.uniqueId)) "hexagon selected" else "hexagon"),
       A.onClick(_ => AppCircuit.dispatch(SelectSegment(seg.uniqueId))),
       A("viewBox", "34.9 66.5 22 26"),
       A("width", "22"),
@@ -38,7 +37,7 @@ case class SegmentView(segment: P[Segment]) extends Component[NoEmit] {
         A("fill", "none"),
         E("g",
           E("path",
-            A("id", if (noIds) UUID.randomUUID().toString else "hex-shape"),
+            A("id", if (noIds) UUID.randomUUID().toString else "hex-svg-path"),
             A("d", "M 45.9 92 L 35.4 85.75 L 35.4 73.25 L 45.9 67 L 56.4 73.25 L 56.4 85.75 Z"),
             A("fill", fillColor),
             A("fill-opacity", fillOpacity.toString),
